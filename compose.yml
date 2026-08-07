@@ -8,6 +8,6 @@ services:
     image: mipe-skills-oras:local
     volumes:
       - .:/workspace:Z
-      - ${DOCKER_CONFIG:-~/.docker}/config.json:/root/.docker/config.json:ro
+      - ${DOCKER_CONFIG:-~/.docker}/config.json:/root/.docker/config.json:ro,Z
     environment:
       REGISTRY: ${REGISTRY:-ghcr.io/meowpow-png/mipe-skills}
