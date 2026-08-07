@@ -11,3 +11,25 @@ services:
       - ${DOCKER_CONFIG:-~/.docker}/config.json:/root/.docker/config.json:ro,Z
     environment:
       REGISTRY: ${REGISTRY:-ghcr.io/meowpow-png/mipe-skills}
+
+  claude:
+    image: ghcr.io/meowpow-png/mipe-runtime-claude:dev-latest
+    working_dir: /workspace
+    volumes:
+      - claude-home:/home/dev
+      - .:/workspace:Z
+    stdin_open: true
+    tty: true
+
+  codex:
+    image: ghcr.io/meowpow-png/mipe-runtime-codex:dev-latest
+    working_dir: /workspace
+    volumes:
+      - codex-home:/home/dev/.codex
+      - .:/workspace:Z
+    stdin_open: true
+    tty: true
+
+volumes:
+  claude-home:
+  codex-home:
