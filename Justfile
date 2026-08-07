@@ -18,3 +18,11 @@ push *args:
 [arg("bundle", help="Bundle name")]
 inspect bundle:
     @tar tzvf build/bundles/{{bundle}}.tar.gz
+
+# Run Claude inside Docker container
+claude:
+    @docker compose run --rm claude
+
+# Run Codex inside Docker container
+codex:
+    @docker compose run --rm codex
