@@ -1,0 +1,13 @@
+name: mipe-skills
+
+services:
+  oras:
+    build:
+      context: .
+      dockerfile: docker/oras/Dockerfile
+    image: mipe-skills-oras:local
+    volumes:
+      - .:/workspace:Z
+      - ${DOCKER_CONFIG:-~/.docker}/config.json:/root/.docker/config.json:ro
+    environment:
+      REGISTRY: ${REGISTRY:-ghcr.io/meowpow-png/mipe-skills}
