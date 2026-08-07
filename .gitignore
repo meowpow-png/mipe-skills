@@ -7,3 +7,7 @@
 
 # Build output
 build/
+
+# Agent
+.codex/
+.claude/
