@@ -24,4 +24,12 @@ if ((${#missing[@]})); then
 	exit 1
 fi
 
+for var in "${required[@]}"; do
+	if [[ "${!var}" == "success" ]]; then
+		printf -v "$var" '✅'
+	else
+		printf -v "$var" '❌'
+	fi
+done
+
 envsubst <"${TEMPLATE}"
