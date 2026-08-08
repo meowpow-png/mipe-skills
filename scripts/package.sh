@@ -1,10 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Packages bundles/<bundle>.yml into a single tar+gzip layer under
-# build/bundles/. Run from the repository root. Bundle manifests are
-# expected to be a flat `skills:` list, one name per line.
-
 usage() {
 	echo "usage: package.sh <bundle>" >&2
 }

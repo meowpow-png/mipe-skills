@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Pushes a previously built bundle as an OCI artifact.
-# Run `package.sh <bundle>` first, then this script from repository root.
-
 usage() {
 	echo "usage: push.sh <bundle> <tag> [<tag> ...]" >&2
 }
