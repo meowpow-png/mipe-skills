@@ -13,26 +13,24 @@ jobs:
   qualitycheck:
     name: Quality
     runs-on: ubuntu-latest
+    env:
+      SHELLCHECK_VERSION: v0.11.0
+      SHFMT_VERSION: 3.13.1
+      DPRINT_VERSION: 0.55.2
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
 
       - name: Install shellcheck
-        run: |
-          wget https://github.com/koalaman/shellcheck/releases/download/v0.11.0/shellcheck-v0.11.0.linux.x86_64.tar.xz
-          tar -xf shellcheck-v0.11.0.linux.x86_64.tar.xz
-          sudo cp shellcheck-v0.11.0/shellcheck /usr/bin/
+        run: .github/scripts/install-shellcheck.sh "$SHELLCHECK_VERSION"
 
       - name: Install shfmt
         uses: mfinelli/setup-shfmt@v4
         with:
-          shfmt-version: 3.13.1
+          shfmt-version: ${{ env.SHFMT_VERSION }}
 
       - name: Install dprint
-        run: |
-          curl -fsSL -o dprint.zip https://github.com/dprint/dprint/releases/download/0.55.2/dprint-x86_64-unknown-linux-gnu.zip
-          unzip dprint.zip -d /tmp/dprint
-          sudo cp /tmp/dprint/dprint /usr/bin/
+        run: .github/scripts/install-dprint.sh "$DPRINT_VERSION"
 
       - name: Lint shell scripts
         id: lint
