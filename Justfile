@@ -44,19 +44,12 @@ fmt-sh *args:
 # Lint markdown formatting with dprint
 [arg("args", help="Extra dprint check arguments")]
 lint-md *args:
-    @docker compose run \
-        --rm \
-        --build \
-        dprint check {{args}}
+    @just dprint check {{args}}
 
 # Format markdown files with dprint
 [arg("args", help="Extra dprint fmt arguments")]
 fmt-md *args:
-    @docker compose run \
-        --rm \
-        --build \
-        --user "$(id -u):$(id -g)" \
-        dprint fmt {{args}}
+    @just dprint fmt {{args}}
 
 [private]
 [arg("command", pattern="push|package")]
@@ -66,3 +59,12 @@ oras command *args:
         --build \
         --user "$(id -u):$(id -g)" \
         oras {{command}} {{args}}
+
+[private]
+[arg("command", pattern="check|fmt")]
+dprint command *args:
+    @docker compose run \
+        --rm \
+        --build \
+        --user "$(id -u):$(id -g)" \
+        dprint {{command}} {{args}}
