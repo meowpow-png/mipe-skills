@@ -1,9 +1,20 @@
 # Quality
 
-Shell scripts are checked with shellcheck and shfmt.\
-Both run through Docker, so you don't need either installed locally.
+Shell scripts are linted and format-checked, and Markdown is checked for consistent style.
 
-## Lint
+Run everything at once:
+
+```
+just qualitycheck
+```
+
+## Shell scripts
+
+Shell scripts are checked with shellcheck and shfmt
+
+### Linting
+
+Check what shellcheck would flag:
 
 ```
 just lint-sh
@@ -18,7 +29,9 @@ just lint-sh scripts/push.sh
 shellcheck prints nothing and exits `0` on a clean pass.
 Silence means it found nothing to report.
 
-## Format
+### Formatting
+
+Check what shfmt would change:
 
 ```
 just fmt-sh
@@ -37,4 +50,29 @@ Both accept file arguments the same way as `lint-sh`, and can be combined:
 
 ```
 just fmt-sh -w scripts/push.sh
+```
+
+## Markdown
+
+Markdown files are checked with dprint.
+
+> [!NOTE]
+> Included files and plugins are configured in `dprint.json`.
+
+### Linting
+
+Check what dprint would flag:
+
+```
+just lint-md
+```
+
+This checks every Markdown file and reports what would change.
+
+### Formatting
+
+To apply the fixes flagged by dprint:
+
+```
+just fmt-md
 ```
