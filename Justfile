@@ -19,6 +19,10 @@ push *args:
 inspect bundle:
     @tar tzvf build/bundles/{{bundle}}.tar.gz
 
+# Remove the build directory
+clean:
+    @rm -rf build
+
 # Run Claude inside Docker container
 claude:
     @docker compose run --rm claude
