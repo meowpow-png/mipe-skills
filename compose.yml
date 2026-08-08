@@ -31,6 +31,18 @@ services:
     stdin_open: true
     tty: true
 
+  shellcheck:
+    image: koalaman/shellcheck:stable
+    working_dir: /workspace
+    volumes:
+      - .:/workspace:z,ro
+
+  shfmt:
+    image: mvdan/shfmt:v3
+    working_dir: /workspace
+    volumes:
+      - .:/workspace:z
+
 volumes:
   claude-home:
   codex-home:

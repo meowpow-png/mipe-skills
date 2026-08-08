@@ -31,6 +31,16 @@ claude:
 codex:
     @docker compose run --rm codex
 
+# Lint shell scripts with shellcheck
+[arg("args", help="Files to check (defaults to all scripts)")]
+lint-sh *args:
+    @scripts/lint.sh {{args}}
+
+# Check shell script formatting with shfmt
+[arg("args", help="Files to check (defaults to all scripts)")]
+fmt-sh *args:
+    @scripts/fmt.sh {{args}}
+
 [private]
 [arg("command", pattern="push|package")]
 oras command *args:
