@@ -31,6 +31,9 @@ claude:
 codex:
     @docker compose run --rm codex
 
+# Run all quality checks
+qualitycheck: lint-sh fmt-sh lint-md
+
 # Lint shell scripts with shellcheck
 [arg("args", help="Files to check (defaults to all scripts)")]
 lint-sh *args:
