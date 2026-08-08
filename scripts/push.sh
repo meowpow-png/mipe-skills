@@ -2,17 +2,17 @@
 set -euo pipefail
 
 usage() {
-	echo "usage: push.sh <bundle> <tag> [<tag> ...]" >&2
+	echo "usage: push.sh <bundle> [extra-tag ...]" >&2
 }
 
-if [ "$#" -lt 2 ]; then
+if [ "$#" -lt 1 ]; then
 	usage
 	exit 1
 fi
 
 bundle="$1"
 shift
-tags=("$@")
+extra_tags=("$@")
 
 registry="${REGISTRY:-ghcr.io/meowpow-png/mipe-skills}"
 layer_media_type="application/vnd.mipe.skill.layer.v1.tar+gzip"
@@ -23,6 +23,14 @@ if [ ! -f "$layer_path" ]; then
 	echo "ERROR: built artifact not found: $layer_path (run 'package.sh ${bundle}' first)" >&2
 	exit 1
 fi
+
+version="$(tar xzOf "$layer_path" manifest.yml | grep -E '^version:[[:space:]]*' | sed -E 's/^version:[[:space:]]*//; s/[[:space:]]+$//')"
+if [ -z "$version" ]; then
+	echo "ERROR: no version declared in ${layer_path}'s manifest.yml" >&2
+	exit 1
+fi
+
+tags=("$version" "latest" "${extra_tags[@]}")
 
 ref="${registry}/${bundle}:$(IFS=,; echo "${tags[*]}")"
 echo "Pushing ${ref}"
