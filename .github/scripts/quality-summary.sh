@@ -7,6 +7,7 @@ TEMPLATE="${ROOT_DIR}/.github/templates/quality-summary.md"
 required=(
 	LINT_STATUS
 	FORMAT_STATUS
+	MARKDOWN_STATUS
 )
 
 missing=()

@@ -43,6 +43,17 @@ services:
     volumes:
       - .:/workspace:z
 
+  dprint:
+    build:
+      context: .
+      dockerfile: docker/dprint/Dockerfile
+    image: mipe-skills-dprint:local
+    working_dir: /workspace
+    volumes:
+      - .:/workspace:z
+    environment:
+      DPRINT_CACHE_DIR: /tmp/dprint-cache
+
 volumes:
   claude-home:
   codex-home:

@@ -28,6 +28,12 @@ jobs:
         with:
           shfmt-version: 3.13.1
 
+      - name: Install dprint
+        run: |
+          curl -fsSL -o dprint.zip https://github.com/dprint/dprint/releases/download/0.55.2/dprint-x86_64-unknown-linux-gnu.zip
+          unzip dprint.zip -d /tmp/dprint
+          sudo cp /tmp/dprint/dprint /usr/bin/
+
       - name: Lint shell scripts
         id: lint
         continue-on-error: true
@@ -38,10 +44,16 @@ jobs:
         continue-on-error: true
         run: shfmt -d $(find . -name '*.sh' -not -path './.git/*' -not -path './build/*')
 
+      - name: Lint markdown formatting
+        id: md
+        continue-on-error: true
+        run: dprint check
+
       - name: Generate job summary
         env:
           LINT_STATUS: ${{ steps.lint.outcome }}
           FORMAT_STATUS: ${{ steps.fmt.outcome }}
+          MARKDOWN_STATUS: ${{ steps.md.outcome }}
         run: .github/scripts/quality-summary.sh >> "$GITHUB_STEP_SUMMARY"
 
       - name: Report check results
@@ -50,6 +62,7 @@ jobs:
           outcomes=(
             "${{ steps.lint.outcome }}"
             "${{ steps.fmt.outcome }}"
+            "${{ steps.md.outcome }}"
           )
           for outcome in "${outcomes[@]}"; do
             [ "$outcome" = "success" ] || exit 1
