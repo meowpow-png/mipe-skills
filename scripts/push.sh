@@ -32,7 +32,10 @@ fi
 
 tags=("$version" "latest" "${extra_tags[@]}")
 
-ref="${registry}/${bundle}:$(IFS=,; echo "${tags[*]}")"
+ref="${registry}/${bundle}:$(
+	IFS=,
+	echo "${tags[*]}"
+)"
 echo "Pushing ${ref}"
 oras push \
 	--artifact-type "$artifact_type" \
