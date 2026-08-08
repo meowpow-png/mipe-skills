@@ -56,7 +56,6 @@ fmt-md *args:
 oras command *args:
     @docker compose run \
         --rm \
-        --build \
         --user "$(id -u):$(id -g)" \
         oras {{command}} {{args}}
 
@@ -65,6 +64,5 @@ oras command *args:
 dprint command *args:
     @docker compose run \
         --rm \
-        --build \
         --user "$(id -u):$(id -g)" \
         dprint {{command}} {{args}}
