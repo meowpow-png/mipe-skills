@@ -7,12 +7,12 @@ default:
 # Package bundle into build directory
 [arg("args", help="Arguments passed to package.sh")]
 package *args:
-    @docker compose run --rm oras package {{args}}
+    @just oras package {{args}}
 
 # Push a previously packaged bundle
 [arg("args", help="Arguments passed to push.sh")]
 push *args:
-    @docker compose run --rm oras push {{args}}
+    @just oras push {{args}}
 
 # List the contents of a packaged bundle
 [arg("bundle", help="Bundle name")]
@@ -30,3 +30,11 @@ claude:
 # Run Codex inside Docker container
 codex:
     @docker compose run --rm codex
+
+[private]
+[arg("command", pattern="push|package")]
+oras command *args:
+    @docker compose run \
+        --rm \
+        --user "$(id -u):$(id -g)" \
+        oras {{command}} {{args}}
