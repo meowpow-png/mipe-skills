@@ -6,20 +6,21 @@ description: Diagnoses Mipe runtime and skill package state. Use when skills fai
 # Workflow
 
 1. Locate `.mipe/mipe.yml` relative to the workspace root
-   - Missing: report "no skills declared", stop
+   - Missing: note "no skills declared"
 2. Parse the `skills:` list
    - Flag malformed YAML, non-list `skills:`, blank entries
    - Flag entries that are not valid `registry/repository[:tag|@digest]` references
 3. List `<agent_home>/skills/`
-   - Missing: report "no skills installed", stop
+   - Missing: ok if no skills were declared in step 1; otherwise report "no skills installed", stop
 4. Compare declared references against installed skill directories
    - Declared but not installed: pull or install likely failed
    - Installed but not declared: leftover from a previous `mipe.yml`
    - Installed but missing `SKILL.md`: failed structural validation
 5. Inspect `/opt/mipe/cache/skills/sha256/` if present
+   - Missing: ok if no skills were declared in step 1; otherwise skip silently
    - Report entry count and total size
    - Flag digest directories that are empty or partially extracted
-6. Report findings grouped by severity: error, warning, ok
+6. Report findings grouped by severity: error, warning, note, ok
    - Each finding: file path, condition, remediation
 
 # Constraints
