@@ -27,8 +27,7 @@ tag protection rule, since a tag push is what triggers a real publication.
 2. Promote that bundle's `## [Unreleased]` entries into a new version heading
 3. Get both changes merged to `main` and wait for CI to go green
 
-CI checks that every bundle still builds and that
-any version bump has a matching changelog entry.
+CI checks that every bundle still builds.
 
 ## Cutting a release
 
@@ -77,10 +76,6 @@ own top-level, dated heading, most recent first:
 Each release entry gets a comparison/version link at the
 bottom of the file, in the usual Keep a Changelog style.
 This is easy to forget, so keep it in mind.
-
-> [!NOTE]
-> CI blocks a merge to main if a bundle's version was bumped without a
-> matching changelog entry.
 
 ## Recovery from a bad release
 
