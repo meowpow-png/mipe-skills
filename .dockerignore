@@ -1,0 +1,4 @@
+*
+!scripts/
+!scripts/package.sh
+!scripts/push.sh
