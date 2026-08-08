@@ -24,8 +24,7 @@ if [ ! -f "$layer_path" ]; then
 	exit 1
 fi
 
-version="$(tar xzOf "$layer_path" manifest.yml | scripts/manifest-version.sh)"
-if [ -z "$version" ]; then
+if ! version="$(tar xzOf "$layer_path" manifest.yml | scripts/manifest-version.sh)"; then
 	echo "ERROR: no version declared in ${layer_path}'s manifest.yml" >&2
 	exit 1
 fi
