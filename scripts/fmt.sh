@@ -30,5 +30,5 @@ echo "Discovered ${#files[@]} file(s):"
 printf '  %s\n' "${files[@]}"
 
 user="$(id -u):$(id -g)"
-echo "Running: docker compose run --rm --user ${user} shfmt ${flags[*]} ${files[*]}"
+echo "Running: docker compose run --rm --user ${user} shfmt ${flags[*]}"
 docker compose run --rm --user "$user" shfmt "${flags[@]}" "${files[@]}"
