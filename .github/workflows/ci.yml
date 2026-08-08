@@ -21,7 +21,28 @@ jobs:
         uses: extractions/setup-just@v4
 
       - name: Lint shell scripts
+        id: lint
+        continue-on-error: true
         run: just lint-sh
 
       - name: Check shell script formatting
+        id: fmt
+        continue-on-error: true
         run: just fmt-sh
+
+      - name: Generate job summary
+        env:
+          LINT_STATUS: ${{ steps.lint.outcome }}
+          FORMAT_STATUS: ${{ steps.fmt.outcome }}
+        run: .github/scripts/quality-summary.sh >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Report check results
+        if: always()
+        run: |
+          outcomes=(
+            "${{ steps.lint.outcome }}"
+            "${{ steps.fmt.outcome }}"
+          )
+          for outcome in "${outcomes[@]}"; do
+            [ "$outcome" = "success" ] || exit 1
+          done
