@@ -34,7 +34,7 @@ CI checks that every bundle still builds.
 Once `main` has the version bump and changelog entry:
 
 ```
-git tag core/v0.2.0
+git tag -a core/v0.2.0 -m "Release core v0.2.0"
 git push origin core/v0.2.0
 ```
 
