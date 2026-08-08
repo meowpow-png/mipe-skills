@@ -7,7 +7,7 @@ services:
       dockerfile: docker/oras/Dockerfile
     image: mipe-skills-oras:local
     volumes:
-      - .:/workspace:Z
+      - .:/workspace:z
       - ${DOCKER_CONFIG:-~/.docker}/config.json:/root/.docker/config.json:ro,Z
     environment:
       REGISTRY: ${REGISTRY:-ghcr.io/meowpow-png/mipe-skills}
@@ -17,7 +17,7 @@ services:
     working_dir: /workspace
     volumes:
       - claude-home:/home/dev
-      - .:/workspace:Z
+      - .:/workspace:z
     stdin_open: true
     tty: true
 
@@ -26,7 +26,7 @@ services:
     working_dir: /workspace
     volumes:
       - codex-home:/home/dev/.codex
-      - .:/workspace:Z
+      - .:/workspace:z
     stdin_open: true
     tty: true
 
