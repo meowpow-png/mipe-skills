@@ -10,7 +10,8 @@ on:
     branches: [main]
 
 jobs:
-  lint:
+  qualitycheck:
+    name: Quality
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
