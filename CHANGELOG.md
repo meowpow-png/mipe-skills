@@ -7,8 +7,11 @@ and this project adheres to SemVer.
 
 ## [Unreleased]
 
+## [core v0.1.0] - 2026-08-08
+
 ### Added
 
 - `mipe-doctor` skill, diagnosing Mipe runtime and skill package state
 
 [Unreleased]: https://github.com/meowpow-png/mipe-skills/commits/main
+[core v0.1.0]: https://github.com/meowpow-png/mipe-skills/releases/tag/core/v0.1.0
