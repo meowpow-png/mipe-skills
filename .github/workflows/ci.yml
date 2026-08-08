@@ -1,0 +1,26 @@
+name: CI
+
+permissions:
+  contents: read
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Setup Just
+        uses: extractions/setup-just@v4
+
+      - name: Lint shell scripts
+        run: just lint-sh
+
+      - name: Check shell script formatting
+        run: just fmt-sh
