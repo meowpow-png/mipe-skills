@@ -1,71 +1,13 @@
 set shell := ["bash", "-eu", "-o", "pipefail", "-c"]
 
+import "just/agent.just"
+import "just/bundle.just"
+import "just/quality.just"
+
 # List available recipes
 default:
     @just --list
 
-# Package bundle into build directory
-[arg("args", help="Arguments passed to package.sh")]
-package *args:
-    @just oras package {{args}}
-
-# Push a previously packaged bundle
-[arg("args", help="Arguments passed to push.sh")]
-push *args:
-    @just oras push {{args}}
-
-# List the contents of a packaged bundle
-[arg("bundle", help="Bundle name")]
-inspect bundle:
-    @tar tzvf build/bundles/{{bundle}}.tar.gz
-
 # Remove the build directory
 clean:
     @rm -rf build
-
-# Run Claude inside Docker container
-claude:
-    @docker compose run --rm claude
-
-# Run Codex inside Docker container
-codex:
-    @docker compose run --rm codex
-
-# Run all quality checks
-qualitycheck: lint-sh fmt-sh lint-md
-
-# Lint shell scripts with shellcheck
-[arg("args", help="Files to check (defaults to all scripts)")]
-lint-sh *args:
-    @scripts/lint.sh {{args}}
-
-# Check shell script formatting with shfmt
-[arg("args", help="Files to check (defaults to all scripts)")]
-fmt-sh *args:
-    @scripts/fmt.sh {{args}}
-
-# Lint markdown formatting with dprint
-[arg("args", help="Extra dprint check arguments")]
-lint-md *args:
-    @just dprint check {{args}}
-
-# Format markdown files with dprint
-[arg("args", help="Extra dprint fmt arguments")]
-fmt-md *args:
-    @just dprint fmt {{args}}
-
-[private]
-[arg("command", pattern="push|package")]
-oras command *args:
-    @docker compose run \
-        --rm \
-        --user "$(id -u):$(id -g)" \
-        oras {{command}} {{args}}
-
-[private]
-[arg("command", pattern="check|fmt")]
-dprint command *args:
-    @docker compose run \
-        --rm \
-        --user "$(id -u):$(id -g)" \
-        dprint {{command}} {{args}}
