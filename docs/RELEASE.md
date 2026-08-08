@@ -50,7 +50,7 @@ set that package's visibility to public in its GitHub package settings.
 
 ## Changelog format
 
-`CHANGELOG.md` is a single, repository file covering every bundle. 
+`CHANGELOG.md` is a single, repository file covering every bundle.
 Changes land under `## [Unreleased]` as they're made:
 
 ```markdown
@@ -62,7 +62,7 @@ Changes land under `## [Unreleased]` as they're made:
 ```
 
 At release time, whichever entries belong to the bundle
-being released are moved out of Unreleased into their 
+being released are moved out of Unreleased into their
 own top-level, dated heading, most recent first:
 
 ```markdown
