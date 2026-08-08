@@ -10,6 +10,22 @@ on:
     branches: [main]
 
 jobs:
+  package:
+    name: Package
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Package bundles
+        run: |
+          for manifest in bundles/*.yml; do
+            bundle="$(basename "$manifest" .yml)"
+            scripts/package.sh "$bundle"
+          done
+
   qualitycheck:
     name: Quality
     runs-on: ubuntu-latest
