@@ -16,7 +16,7 @@ Once it's built, check what actually went in:
 just inspect core
 ```
 
-Re-running `package` overwrites the tarball, 
+Re-running `package` overwrites the tarball,
 but if `build/` piles up with old output, wipe it first:
 
 ```
@@ -33,7 +33,7 @@ For example:
 just push core
 ```
 
-It reads the version straight out of the tarball's manifest and pushes 
+It reads the version straight out of the tarball's manifest and pushes
 the bundle as `<version>` and `latest`. The tag always matches what's actually in the artifact.
 
 To cut a new release, bump the version:

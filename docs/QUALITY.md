@@ -1,6 +1,6 @@
 # Quality
 
-Shell scripts are checked with shellcheck and shfmt.  
+Shell scripts are checked with shellcheck and shfmt.\
 Both run through Docker, so you don't need either installed locally.
 
 ## Lint
@@ -15,7 +15,7 @@ Runs shellcheck against every `.sh` file in the repo. Pass files to check a subs
 just lint-sh scripts/push.sh
 ```
 
-shellcheck prints nothing and exits `0` on a clean pass. 
+shellcheck prints nothing and exits `0` on a clean pass.
 Silence means it found nothing to report.
 
 ## Format
@@ -25,7 +25,7 @@ just fmt-sh
 ```
 
 Runs shfmt in diff mode against every `.sh` file.
-It will show what would change without touching anything. 
+It will show what would change without touching anything.
 
 Add `-w` to write the fixes:
 
