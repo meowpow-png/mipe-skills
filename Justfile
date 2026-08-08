@@ -36,5 +36,6 @@ codex:
 oras command *args:
     @docker compose run \
         --rm \
+        --build \
         --user "$(id -u):$(id -g)" \
         oras {{command}} {{args}}
