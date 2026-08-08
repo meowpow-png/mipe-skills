@@ -27,6 +27,8 @@ fi
 staging_dir="$(mktemp -d)"
 trap 'rm -rf "$staging_dir"' EXIT
 
+cp "$bundle_file" "${staging_dir}/manifest.yml"
+
 for name in "${skill_names[@]}"; do
 	source_dir="skills/${name}"
 	if [ ! -f "${source_dir}/SKILL.md" ]; then
@@ -42,6 +44,6 @@ output_dir="build/bundles"
 output_path="${output_dir}/${bundle}.tar.gz"
 mkdir -p "$output_dir"
 
-tar --numeric-owner --owner=0 --group=0 -czf "$output_path" -C "$staging_dir" skills
+tar --numeric-owner --owner=0 --group=0 -czf "$output_path" -C "$staging_dir" manifest.yml skills
 
 echo "Wrote ${output_path}"
