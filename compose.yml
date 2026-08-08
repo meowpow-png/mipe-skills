@@ -32,13 +32,13 @@ services:
     tty: true
 
   shellcheck:
-    image: koalaman/shellcheck:stable
+    image: koalaman/shellcheck:v0.11.0
     working_dir: /workspace
     volumes:
       - .:/workspace:z,ro
 
   shfmt:
-    image: mvdan/shfmt:v3
+    image: mvdan/shfmt:v3.13.1
     working_dir: /workspace
     volumes:
       - .:/workspace:z
