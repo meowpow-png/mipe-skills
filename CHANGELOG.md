@@ -7,6 +7,12 @@ and this project adheres to SemVer.
 
 ## [Unreleased]
 
+## [java v0.1.1] - 2026-08-11
+
+### Fixed
+
+- `java-unit-tests` skill, add missing `TESTING.md` that the skill requires
+
 ## [git v0.1.0] - 2026-08-11
 
 ### Added
@@ -33,6 +39,7 @@ and this project adheres to SemVer.
 - `mipe-doctor` skill, diagnosing Mipe runtime and skill package state
 
 [Unreleased]: https://github.com/meowpow-png/mipe-skills/commits/main
+[java v0.1.1]: https://github.com/meowpow-png/mipe-skills/releases/tag/java/v0.1.1
 [git v0.1.0]: https://github.com/meowpow-png/mipe-skills/releases/tag/git/v0.1.0
 [java v0.1.0]: https://github.com/meowpow-png/mipe-skills/releases/tag/java/v0.1.0
 [docs v0.1.0]: https://github.com/meowpow-png/mipe-skills/releases/tag/docs/v0.1.0
