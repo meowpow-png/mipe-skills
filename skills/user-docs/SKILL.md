@@ -1,27 +1,37 @@
 ---
-name: plain-docs
+name: user-docs
 description: Writes user project documentation. Use when creating or updating user-facing docs like README or CONTRIBUTING.
 ---
 
-## Tone
+## Voice
 
-Write like you're explaining the repo to someone who just cloned it, not writing a brochure for it.
+Write like you're helping someone use the project after they just opened it.
 
-Prefer:
+Keep the voice casual, clear, and practical. Prefer second person and
+natural phrasing over formal documentation language.
 
-- Plain and direct, second person ("you")
-- Short sentences, contractions are fine
-- Dry humor is fine if it isn't forced
-- Say what someone needs to do, not everything that's possible
-- A short example (code, config, frontmatter) over a paragraph explaining the same thing
-- What's specific to this repo, not generic tool behavior (e.g., skip explaining what `npm install` does)
-- Short, scannable sections — one example per concept
+Do not use humor, jokes, or playful commentary.
 
-Avoid:
+## Content
 
-- Marketing language: "powerful", "seamless", "game-changing", "blazing fast"
-- Corporate hedging: "please note that", "it is important to", "kindly"
-- AI-writing tells: "let's dive in", "in today's landscape", "leverage", "utilize", "unlock"
-- Exclamation points, emoji
-- Unnecessary preamble before getting to the point
-- Disclaimers nobody asked for
+Tell the reader what they need to know or do.
+
+Prefer project-specific details to generic tool behavior. Do not explain
+common commands or concepts unless they matter to using this project.
+
+Prefer a short example over a paragraph when code, config, or output shows the idea more clearly.
+
+## Structure
+
+Keep sections short and easy to scan.
+
+Cover one concept at a time. Get to the useful part quickly and avoid unnecessary preamble.
+
+Do not add disclaimers or side notes the reader did not ask for.
+
+## Style
+
+- No exclamation points or emojis
+- Avoid corporate phrasing like "please note that" or "kindly"
+- Avoid AI-writing phrases like "let's dive in", "leverage", or "unlock"
+- Avoid listing every possible option when one clear path is enough
