@@ -7,6 +7,13 @@ and this project adheres to SemVer.
 
 ## [Unreleased]
 
+## [libgdx v0.1.0] - 2026-08-14
+
+### Added
+
+- `libgdx-logging` skill, logging guidance for LibGDX games
+- `libgdx-performance` skill, performance guidance for LibGDX games
+
 ## [java v0.1.1] - 2026-08-11
 
 ### Fixed
@@ -39,6 +46,7 @@ and this project adheres to SemVer.
 - `mipe-doctor` skill, diagnosing Mipe runtime and skill package state
 
 [Unreleased]: https://github.com/meowpow-png/mipe-skills/commits/main
+[libgdx v0.1.0]: https://github.com/meowpow-png/mipe-skills/releases/tag/libgdx/v0.1.0
 [java v0.1.1]: https://github.com/meowpow-png/mipe-skills/releases/tag/java/v0.1.1
 [git v0.1.0]: https://github.com/meowpow-png/mipe-skills/releases/tag/git/v0.1.0
 [java v0.1.0]: https://github.com/meowpow-png/mipe-skills/releases/tag/java/v0.1.0
