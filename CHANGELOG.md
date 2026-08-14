@@ -7,6 +7,16 @@ and this project adheres to SemVer.
 
 ## [Unreleased]
 
+## [docs v0.2.0] - 2026-08-14
+
+### Added
+
+- `dev-docs` skill, writing developer project documentation for explaining how a project is structured or works internally
+
+### Changed
+
+- `user-docs` skill (formerly `plain-docs`) now has stricter, less casual guidelines without humor or playful commentary
+
 ## [libgdx v0.1.0] - 2026-08-14
 
 ### Added
@@ -46,6 +56,7 @@ and this project adheres to SemVer.
 - `mipe-doctor` skill, diagnosing Mipe runtime and skill package state
 
 [Unreleased]: https://github.com/meowpow-png/mipe-skills/commits/main
+[docs v0.2.0]: https://github.com/meowpow-png/mipe-skills/compare/docs/v0.1.0...docs/v0.2.0
 [libgdx v0.1.0]: https://github.com/meowpow-png/mipe-skills/releases/tag/libgdx/v0.1.0
 [java v0.1.1]: https://github.com/meowpow-png/mipe-skills/releases/tag/java/v0.1.1
 [git v0.1.0]: https://github.com/meowpow-png/mipe-skills/releases/tag/git/v0.1.0
