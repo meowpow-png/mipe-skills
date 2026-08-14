@@ -1,6 +1,6 @@
 ---
 name: plain-docs
-description: Writes project documentation. Use when creating or updating user-facing docs like README or CONTRIBUTING.
+description: Writes user project documentation. Use when creating or updating user-facing docs like README or CONTRIBUTING.
 ---
 
 ## Tone
